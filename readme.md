@@ -11,7 +11,7 @@ Remove the Gravity Forms License Notice from the WP Admin header
 
 ## Description
 
-This plugin makes it easy to remove the Gravity Forms license notice from the WP Admin header and WordPress Admin plugins page.
+This plugin makes it easy to remove the Gravity Forms license notices from the WP Admin plugins page.
 
 ## Installation
 
@@ -21,8 +21,8 @@ That's it! The Gravity Forms License Notice will no longer display on the plugin
 
 ## Screenshots
 
-1. An example of the Gravity Forms License Notice at the top of the WP Admin Plugins page.
-2. Once this plugin is activated, the Gravity Forms License Warning notice is not visible.
+1. An example of the Gravity Forms License Notice within the plugin row of each GF plugin listed on the plugins page.
+2. Once this plugin is activated, the Gravity Forms License Warning notices are not visible.
 
 ## Changelog
 

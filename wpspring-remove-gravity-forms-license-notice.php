@@ -12,9 +12,9 @@
 	* @author WPspring
 	*/
 
-if ( !class_exists( 'RemoveGravityformsLicenseNotice' ) ) :
+if ( !class_exists( 'WPspring_Remove_Gravity_Forms_License_Notice' ) ) :
 
-class RemoveGravityformsLicenseNotice {
+class WPspring_Remove_Gravity_Forms_License_Notice {
 
 	public function __construct() {
 
@@ -26,9 +26,75 @@ class RemoveGravityformsLicenseNotice {
 
 		if ( is_admin() && class_exists( 'GFForms') && null !== RG_CURRENT_PAGE && RG_CURRENT_PAGE == "plugins.php" ) {
 
+			// Gravity Forms Core
 			remove_action( 'after_plugin_row_gravityforms/gravityforms.php', array( 'GFForms', 'plugin_row' ) );
 
-			$this->wpspring_remove_anonymous_object_filter( 'after_plugin_row_gravityformsaweber/aweber.php','GFAutoUpgrade','rg_plugin_row' );
+			// Legacy PayPal Pro Add-On
+			if ( is_plugin_active( 'gravityformspaypalpro/paypalpro.php' ) ) {
+
+				remove_action( 'after_plugin_row_gravityformspaypalpro/paypalpro.php', array( 'GFPayPalPro', 'plugin_row' ) );
+
+			}
+
+			// Gravity Forms Zapier Add-On
+   if ( is_plugin_active( 'gravityformszapier/zapier.php' ) ) {
+
+    remove_action( 'after_plugin_row_gravityformszapier/zapier.php', array( 'GFZapier', 'plugin_row' ) );
+
+   }
+
+			// Gravity Forms Add-Ons
+			$plugin_paths_array = array(
+
+				'gravityformsactivecampaign/activecampaign.php',
+				'gravityformsaweber/aweber.php',
+				'gravityformscampaignmonitor/campaignmonitor.php',
+				'gravityformscleverreach/cleverreach.php',
+				'gravityformsemma/emma.php',
+				'gravityformsgetresponse/getresponse.php',
+				'gravityformsicontact/icontact.php',
+				'gravityformsmadmimi/madmimi.php',
+				'gravityformsmailchimp/mailchimp.php',
+				'gravityformsagilecrm/agilecrm.php',
+				'gravityformsauthorizenet/authorizenet.php',
+				'gravityformsbatchbook/batchbook.php',
+				'gravityformsbreeze/breeze.php',
+				'gravityformscampfire/campfire.php',
+				'gravityformscapsulecrm/capsulecrm.php',
+				'gravityformschainedselects/chainedselects.php',
+				'gravityformscoupons/coupons.php',
+				'gravityformsdropbox/dropbox.php',
+				'gravityformsfreshbooks/freshbooks.php',
+				'gravityformshelpscout/helpscout.php',
+				'gravityformshighrise/highrise.php',
+				'gravityformshipchat/hipchat.php',
+				'gravityformspartialentries/partialentries.php',
+				'gravityformspaypal/paypal.php',
+				'gravityformspaypalpaymentspro/paypalpaymentspro.php',
+				'gravityformspipe/pipe.php',
+				'gravityformspolls/polls.php',
+				'gravityformsquiz/quiz.php',
+				'gravityformssignature/signature.php',
+				'gravityformsslack/slack.php',
+				'gravityformsstripe/stripe.php',
+				'gravityformssurvey/survey.php',
+				'gravityformstrello/trello.php',
+				'gravityformstwilio/twilio.php',
+				'gravityformsuserregistration/userregistration.php',
+				'gravityformswebhooks/webhooks.php',
+				'gravityformszohocrm/zohocrm.php'
+
+			);
+
+			foreach ( $plugin_paths_array as $plugin_path ) {
+
+				if ( is_plugin_active( $plugin_path ) ) {
+
+					$this->wpspring_remove_anonymous_object_filter( 'after_plugin_row_' . $plugin_path, 'GFAutoUpgrade', 'rg_plugin_row' );
+
+				}
+
+			}
 
 		}
 
@@ -69,8 +135,6 @@ class RemoveGravityformsLicenseNotice {
 
 }
 
-$GLOBALS['wpspring_removegravityformslicensenotice'] = new RemoveGravityformsLicenseNotice();
+$GLOBALS['wpspring_remove_gravity_forms_license_notice'] = new WPspring_Remove_Gravity_Forms_License_Notice();
 
 endif;
-
-?>

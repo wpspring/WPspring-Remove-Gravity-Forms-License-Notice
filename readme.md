@@ -1,10 +1,10 @@
-# WPspring Remove Gravity Forms License Notice
+# Remove Gravity Forms License Notice
 Contributors: wpspring
 Tags: gravityforms license notice, gravity forms
 Requires at least: 3.0
-Tested up to: 4.9
+Tested up to: 4.9.5
 Donate link: https://wpspring.com/
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 
 Remove Gravity Forms License Notices from the WP Admin header

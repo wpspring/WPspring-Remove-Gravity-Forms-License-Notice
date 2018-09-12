@@ -3,7 +3,7 @@
 	* Plugin Name: Remove Gravity Forms License Notice
 	* Plugin URI: https://wordpress.org/plugins/wpspring-remove-gravity-forms-license-notice/
 	* Description: This plugin makes it easy to remove the Gravity Forms license notice from the WP Admin plugins page.
-	* Version: 1.0.2
+	* Version: 1.0.3
 	* Author: WPspring
 	* Author URI: https://wpspring.com/
 	* Requires at least: 3.0
@@ -23,6 +23,14 @@ class WPspring_Remove_Gravity_Forms_License_Notice {
 	}
 
 	public function init() {
+
+		//if ( is_admin() && class_exists( 'GFForms') ) {
+
+			//$message = '<div class="nulled"></div>';
+
+			//update_option( 'rg_gforms_message', $message );
+
+  //}
 
 		if ( is_admin() && class_exists( 'GFForms') && null !== RG_CURRENT_PAGE && RG_CURRENT_PAGE == "plugins.php" ) {
 
